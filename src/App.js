@@ -38,7 +38,8 @@ function App() {
     }
 
     // Email validation
-    if (!email.includes('@')) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
       alert('Invalid email. Please check your email address.');
       return;
     }
@@ -53,9 +54,9 @@ function App() {
     const today = new Date();
     const enteredDate = new Date(dob);
     if (enteredDate > today) {
-      alert('Invalid phone number. Please enter a 10-digit phone number.');
-      return;
-    }
+        alert('Invalid date of birth. Please enter a valid past date.');
+        return;
+      }
 
     // All validations passed
     setShowModal(false);
