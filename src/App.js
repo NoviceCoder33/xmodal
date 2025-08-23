@@ -19,19 +19,13 @@ function App() {
     e.preventDefault();
     const { username, email, dob, phone } = formData;
 
-    // Username validation
-    if (!username.trim()) {
-      alert('Please fill out the Username field.');
-      return;
-    }
-
     // Email validation
     if (!email.trim()) {
       alert('Please fill out the Email field.');
       return;
     }
     if (!email.includes('@')) {
-      alert('Invalid email. Please check your email address.');
+      alert('Invalid email');
       return;
     }
 
@@ -42,7 +36,7 @@ function App() {
     }
     const cleanedPhone = phone.replace(/\D/g, '');
     if (cleanedPhone.length !== 10) {
-      alert('Invalid phone number. Please enter a 10-digit phone number.');
+      alert('Invalid phone number');
       return;
     }
 
@@ -54,7 +48,13 @@ function App() {
     const enteredDate = new Date(dob);
     const today = new Date();
     if (isNaN(enteredDate.getTime()) || enteredDate > today) {
-      alert('Invalid date of birth. Please enter a valid past date.');
+      alert('Invalid date of birth');
+      return;
+    }
+
+    // Username validation (only required for final submission)
+    if (!username.trim()) {
+      alert('Please fill out the Username field.');
       return;
     }
 
@@ -64,18 +64,18 @@ function App() {
   };
 
   return (
-    <div className="app">
-    {!showModal && (
-    <div className="open-form-wrapper">
-      <h1>User Details Modal</h1>
-      <button
-        className="open-form-button"
-        onClick={() => setShowModal(true)}
-      >
-        Open Form
-      </button>
-    </div>
-  )}
+    <div id="root" className="app">
+      {!showModal && (
+        <div className="open-form-wrapper">
+          <h1>User Details Modal</h1>
+          <button
+            className="open-form-button"
+            onClick={() => setShowModal(true)}
+          >
+            Open Form
+          </button>
+        </div>
+      )}
 
       {showModal && (
         <div className="modal" onClick={() => setShowModal(false)}>
