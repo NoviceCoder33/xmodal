@@ -18,13 +18,13 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { username, email, dob, phone } = formData;
-  
+
     // Username validation
     if (!username.trim()) {
       alert('Please fill out the Username field.');
       return;
     }
-  
+
     // Email validation
     if (!email.trim()) {
       alert('Please fill out the Email field.');
@@ -34,7 +34,7 @@ function App() {
       alert('Invalid email. Please check your email address.');
       return;
     }
-  
+
     // Phone validation
     if (!phone.trim()) {
       alert('Please fill out the Phone Number field.');
@@ -45,7 +45,7 @@ function App() {
       alert('Invalid phone number. Please enter a 10-digit phone number.');
       return;
     }
-  
+
     // DOB validation
     if (!dob.trim()) {
       alert('Please fill out the Date of Birth field.');
@@ -57,11 +57,12 @@ function App() {
       alert('Invalid date of birth. Please enter a valid past date.');
       return;
     }
-  
+
     // All validations passed
     setShowModal(false);
     setFormData({ username: '', email: '', dob: '', phone: '' });
   };
+
   return (
     <div className="app">
     {!showModal && (
